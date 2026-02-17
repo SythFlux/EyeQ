@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    runtime: nvidia
+    network_mode: host
+    devices:
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+    volumes:
+      - ./src:/app
+    working_dir: /app
+    tty: true
+    stdin_open: true  
+    command: python3 cam.py
